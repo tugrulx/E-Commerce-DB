@@ -1,0 +1,228 @@
+-- Categories
+INSERT INTO CATEGORY (Name, ParentCategoryID) VALUES
+('Elektronik', NULL),
+('Giyim', NULL),
+('Ev & Yaşam', NULL),
+('Kitap', NULL),
+('Spor & Outdoor', NULL),
+('Kozmetik', NULL),
+('Oyun & Hobi', NULL);
+
+INSERT INTO CATEGORY (Name, ParentCategoryID) VALUES
+('Telefonlar', 1),
+('Bilgisayarlar', 1),
+('Kadın Giyim', 2),
+('Erkek Giyim', 2),
+('Mutfak', 3),
+('Mobilya', 3),
+('Spor Ayakkabı', 5),
+('Spor Giyim', 5),
+('Kamp Malzemeleri', 5),
+('Makyaj', 6),
+('Cilt Bakımı', 6),
+('Parfüm', 6),
+('Video Oyunları', 7),
+('Kutu Oyunları', 7);
+
+-- Products
+INSERT INTO PRODUCT (Brand, Name, Description, Type, CategoryID) VALUES
+('Samsung', 'Galaxy S23', 'Yeni nesil akıllı telefon', 'Telefon', 8),
+('Apple', 'iPhone 14', 'iOS işletim sistemli telefon', 'Telefon', 8),
+('Lenovo', 'ThinkPad X1', '14 inç İş Laptopu', 'Laptop', 9),
+('Mavi', 'Klasik Jean', 'Rahat kesim kot pantolon', 'Pantolon', 11),
+('Karaca', 'Çay Takımı', '6 kişilik porselen çay takımı', 'Mutfak Eşyası', 12),
+('Bellona', 'Koltuk Takımı', '3+3+1 koltuk takımı', 'Mobilya', 13),
+('Nike', 'Air Max 2024', 'Yeni nesil koşu ayakkabısı', 'Ayakkabı', 14),
+('Adidas', 'Performans Eşofman', 'Sporcu eşofman takımı', 'Spor Giyim', 15),
+('Coleman', 'Outdoor Çadır', '4 kişilik kamp çadırı', 'Kamp', 16),
+('MAC', 'Ruby Woo Ruj', 'Mat kırmızı ruj', 'Makyaj', 17),
+('La Roche Posay', 'Effaclar Duo', 'Akne karşıtı krem', 'Cilt Bakımı', 18),
+('Bvlgari', 'Omnia Crystal', 'Kadın parfüm', 'Parfüm', 19),
+('Sony', 'PS5 Oyun Konsolu', 'Dijital sürüm', 'Konsol', 20),
+('Monopoly', 'Monopoly Türkiye', 'Türkiye temalı kutu oyunu', 'Kutu Oyunu', 21);
+
+-- User Accounts
+INSERT INTO USER_ACCOUNT (Email, Name, Surname, Password, Bdate, Sex, Country, UserType, CustomerType, Due_date, Tax_no) VALUES
+('ahmet.yilmaz@gmail.com', 'Ahmet', 'Yılmaz', 'sifre123', '1990-05-15', 'M', 'Türkiye', 'customer', 'regular', NULL , NULL),
+('ayse.demir@outlook.com', 'Ayşe', 'Demir', 'sifre456', '1985-08-22', 'F', 'Türkiye', 'customer', 'exclusive', '2025-03-16', NULL),
+('mehmet.sahin@outlook.com', 'Mehmet', 'Şahin', 'sifre789', '1980-03-10', 'M', 'Türkiye', 'shopowner', NULL, NULL, '1234567890'),
+('fatma.kaya@gmail.com', 'Fatma', 'Kaya', 'sifre321', '1992-03-25', 'F', 'Türkiye', 'customer', 'regular', NULL, NULL),
+('ali.ozturk@gmail.com', 'Ali', 'Öztürk', 'sifre654', '1988-11-15', 'M', 'Türkiye', 'customer', 'exclusive', '2025-01-20', NULL),
+('zeynep.celik@gmail.com', 'Zeynep', 'Çelik', 'sifre987', '1983-07-20', 'F', 'Türkiye', 'shopowner', NULL, NULL, '9876543210'),
+('can.yildirim@outlook.com', 'Can', 'Yıldırım', 'sifre147', '1986-09-30', 'M', 'Türkiye', 'shopowner', NULL, NULL, '4567891230');
+
+-- Shops
+INSERT INTO SHOP (OwnerUserID, Address, Income, Rating, MERSIS) VALUES
+(3, 'Bağdat Caddesi No:123, Kadıköy, İstanbul', 0.00, 4.5, '0123456789123456'),
+(7, 'İstiklal Caddesi No:456, Beyoğlu, İstanbul', 0.00, 4.8, '9876543210123456'),
+(6, 'Karşıyaka Caddesi No:789, Alsancak, İzmir', 0.00, 4.6, '4567891230123456');
+
+-- Shop Products
+INSERT INTO SHOP_PRODUCT (ProductID, ShopID, OwnerUserID, Stock, Price) VALUES
+(1, 1, 3, 50, 25999.99),
+(2, 1, 3, 30, 35999.99),
+(3, 1, 3, 20, 29999.99),
+(4, 2, 7, 100, 1299.99),
+(5, 2, 7, 75, 2499.99),
+(6, 2, 7, 50, 1799.99),
+(7, 3, 6, 25, 14999.99),
+(8, 3, 6, 200, 399.99);
+
+-- Discounts
+INSERT INTO DISCOUNT (ShopID, ProductID, OwnerUserID, Rate, Due_Date) VALUES
+(1, 1, 3, 10.00, '2025-02-01'),
+(1, 2, 3, 15.00, '2025-02-01'),
+(2, 4, 7, 20.00, '2025-02-15'),
+(3, 7, 6, 10.00, '2025-02-28');
+
+-- Saved Addresses
+INSERT INTO SAVED_ADDRESS (UserID, Door_No, Country, Zipcode, Telephone_number, Street, City) VALUES
+(1, '12', 'Türkiye', '34744', '+905551234567', 'Atatürk Caddesi', 'İstanbul'),
+(1, '78', 'Türkiye', '34744', '+905551234567', 'Bağdat Caddesi', 'İstanbul'),
+(2, '45', 'Türkiye', '06100', '+905559876543', 'Kızılay Sokak', 'Ankara'),
+(4, '56', 'Türkiye', '34220', '+905559874563', 'Nişantaşı Sokak', 'İstanbul'),
+(5, '34', 'Türkiye', '35600', '+905552369874', 'Kordon Boyu', 'İzmir');
+
+-- Delivery Addresses
+INSERT INTO DELIVERY_ADDRESS (UserID, Door_No, Country, Zipcode, Telephone_number, Street, City) VALUES
+(1, '12', 'Türkiye', '34744', '+905551234567', 'Atatürk Caddesi', 'İstanbul'),
+(2, '45', 'Türkiye', '06100', '+905559876543', 'Kızılay Sokak', 'Ankara'),
+(4, '23', 'Türkiye', '35500', '+905557891234', 'Cumhuriyet Bulvarı', 'İzmir'),
+(5, '89', 'Türkiye', '06800', '+905553216547', 'Tunalı Hilmi Caddesi', 'Ankara');
+
+-- Pickup Points
+INSERT INTO PICKUPPOINT (Address_no, Available_hours, Locker_no, IsAutomat) VALUES
+(1, '09:00:00', 'A123', true),
+(2, '08:00:00', 'B456', true);
+
+-- Custom Addresses
+INSERT INTO CUSTOM_ADDRESS (Address_no, Title) VALUES
+(1, 'Ev Adresim'),
+(2, 'İş Adresim');
+
+-- Registered Cards
+INSERT INTO REGISTERED_CARDS (UserID, Cvv, Card_no, Name, Due_date) VALUES
+(1, '123', '4532123456789012', 'Ahmet Yılmaz', '2026-12-31'),
+(2, '456', '5432109876543210', 'Ayşe Demir', '2026-10-31'),
+(4, '789', '6789012345678901', 'Fatma Kaya', '2027-03-31'),
+(5, '321', '9876543210987654', 'Ali Öztürk', '2026-08-31');
+
+-- Coupons and Assignments
+INSERT INTO COUPON (Due_date, status, Amount) VALUES
+('2025-12-31', 'valid', 250),
+('2025-12-31', 'valid', 500),
+('2025-12-31', 'valid', 750),
+('2025-12-31', 'valid', 1000);
+
+INSERT INTO COUPON_USER_ACCOUNT (UserID, Coupon_no) VALUES
+(1, 1),
+(2, 2),
+(4, 3),
+(5, 4);
+
+-- Shopping Cart Items
+INSERT INTO CART_INCLUDES_SHOP_PRODUCT (UserID, ShopID, ProductID, OwnerUserID, Quantity) VALUES
+(1, 1, 1, 3, 2),
+(1, 1, 2, 3, 2),
+(2, 1, 2, 3, 1),
+(4, 2, 4, 7, 1),
+(5, 3, 7, 6, 1);
+
+-- Billing Information
+INSERT INTO BILLING_INFORMATION (UserID, CFlag, Cvv, Card_no, Name, Card_Due_Date, GCFlag, GiftCard_Due_Date, Code, Amount) VALUES
+(1, true, '123', '4532123456789012', 'Ahmet Yılmaz', '2026-12-31', false, NULL, NULL, 25999.99),
+(2, true, '456', '5432109876543210', 'Ayşe Demir', '2026-10-31', false, NULL, NULL, 35999.99),
+(4, true, '789', '6789012345678901', 'Fatma Kaya', '2027-03-31', false, NULL, NULL, 1299.99),
+(5, true, '321', '9876543210987654', 'Ali Öztürk', '2026-08-31', false, NULL, NULL, 14999.99);
+
+-- Logistics
+INSERT INTO LOGISTICS (Type, Name) VALUES
+('regular', '3. Parti Kargo'),
+('exclusive', 'Premium Kargo');
+
+-- Orders
+INSERT INTO ORDER_TABLE (UserID, Status, Date, BillingID, AddressNo) VALUES
+(1, 'shipping', '2025-01-05', 1, 1),
+(2, 'shipping', '2025-01-12', 2, 2),
+(4, 'shipping', '2025-01-14', 3, 3),
+(5, 'shipping', '2025-01-15', 4, 4);
+
+-- Wishlists
+INSERT INTO WISHLIST (UserID) VALUES
+(1),
+(2),
+(4),
+(5);
+
+-- Shop Product in Wishlist
+INSERT INTO SHOP_PRODUCT_IN_WISHLIST (ProductID, ShopID, OwnerUserID, UserID, WishlistID) VALUES
+(1, 1, 3, 1, 1),
+(2, 1, 3, 2, 2),
+(4, 2, 7, 4, 3),
+(7, 3, 6, 5, 4);
+
+-- Conversations
+INSERT INTO CONVERSATION (UserID, ShopID, ProductID, OwnerUserID, Question, Answer) VALUES
+(1, 1, 1, 3, 'Ürünün garanti süresi ne kadar?', '2 yıl garantilidir.'),
+(2, 1, 2, 3, 'Ürün ne zaman kargoya verilecek?', '24 saat içinde kargoya verilecektir.'),
+(4, 2, 4, 7, 'Farklı renk seçeneği var mı?', 'Evet, siyah ve mavi renk seçeneklerimiz mevcut.'),
+(5, 3, 7, 6, 'Yanında oyun hediyesi var mı?', 'Evet, 2 adet oyun hediyeli olarak gönderilmektedir.');
+
+-- Reviews
+INSERT INTO REVIEW (UserID, ShopID, ProductID, OwnerUserID, Date, Rating, Text) VALUES
+(1, 1, 1, 3, '2025-01-10', 5, 'Çok memnun kaldım, hızlı kargo ve kaliteli ürün.'),
+(2, 1, 2, 3, '2025-01-12', 4, 'Ürün güzel ama kargo biraz geç geldi.'),
+(4, 2, 4, 7, '2025-01-14', 5, 'Harika bir ürün, kesinlikle tavsiye ederim.'),
+(5, 3, 7, 6, '2025-01-15', 4, 'Ürün kaliteli ama fiyatı biraz yüksek.');
+
+-- Return Items
+INSERT INTO RETURN_ITEM (UserID, OwnerUserID, ShopID, ProductID, OrderID, Description, Status, Quantity) VALUES
+(1, 3, 1, 1, 1, 'Ürün beklediğim gibi değil', 'in progress', 1);
+
+-- Media
+INSERT INTO MEDIA (URL, ProductID, Date, Type) VALUES
+('https://example.com/galaxy-s23.jpg', 1, '2025-01-01', 'image'),
+('https://example.com/iphone14.jpg', 2, '2025-01-01', 'image'),
+('https://example.com/thinkpad.jpg', 3, '2025-01-01', 'image'),
+('https://example.com/airmax2024.jpg', 4, '2025-01-01', 'image'),
+('https://example.com/esofman.jpg', 5, '2025-01-01', 'image'),
+('https://example.com/cadir.jpg', 6, '2025-01-01', 'image'),
+('https://example.com/rubywoo.jpg', 7, '2025-01-01', 'image'),
+('https://example.com/effaclar.jpg', 8, '2025-01-01', 'image'),
+('https://example.com/galaxy-s23-2.jpg', 1, '2025-01-01', 'image'),
+('https://example.com/galaxy-s23-video.mp4', 1, '2025-01-01', 'video');
+
+-- Product Features
+INSERT INTO PRODUCT_FEATURES (ProductID, Features) VALUES
+(1, '6.1 inç Ekran'),
+(1, '256GB Depolama'),
+(1, '5G Desteği'),
+(2, '6.1 inç Super Retina XDR Ekran'),
+(2, '128GB Depolama'),
+(2, 'Face ID'),
+(3, '14 inç 4K Ekran'),
+(3, '32GB RAM'),
+(3, 'Intel i7 İşlemci'),
+(4, 'Air teknolojisi'),
+(4, 'Hafif taban'),
+(4, 'Ortopedik tabanlık'),
+(5, 'Ter tutmayan kumaş'),
+(5, 'Fermuarlı cep'),
+(5, 'Reflektörlü şeritler'),
+(6, 'Su geçirmez materyal'),
+(6, 'Kolay kurulum'),
+(6, 'UV koruma'),
+(7, '8 saat pil ömrü'),
+(7, '4K oyun desteği'),
+(8, 'Türkçe oyun kartları'),
+(8, '2-6 oyuncu'),
+(8, 'Aile oyunu');
+
+-- Contributors for Wishlists
+INSERT INTO CONTRIBUTORS (ContributorID, OwnerID, WishlistID) VALUES
+(2, 1, 1),
+(1, 2, 2),
+(1, 4, 3),
+(2, 5, 4),
+(4, 1, 1),
+(5, 2, 2);
